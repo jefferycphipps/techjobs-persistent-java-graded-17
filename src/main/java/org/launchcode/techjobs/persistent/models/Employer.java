@@ -18,11 +18,11 @@ public class Employer extends AbstractEntity {
 
     @NotBlank(message = "location cannot be blank")
     @Size(min = 3, max = 100, message = "Must between 3 and 100 characters")
-    public String location;
+    private String location;
 
 
     @OneToMany(mappedBy = "employer")
-    @JoinColumn
+    @JoinColumn(name = "employer_id")
     private static List<Job> jobs = new ArrayList<>();
 
 
@@ -35,6 +35,9 @@ public class Employer extends AbstractEntity {
         this.setName(someName);
         this.location = someLocation;
     }
+
+
+
 
     public String getLocation() {
         return location;
